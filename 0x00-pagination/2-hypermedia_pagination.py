@@ -58,7 +58,7 @@ class Server:
         total_pages = math.ceil(len(all_data) / page_size)
         if (page * page_size) < len(all_data):
             next_page = page + 1
-        if (page >= 1):
+        if (page >= 2):
             prev_page = page - 1
         response = {
             "page_size": len(data),
