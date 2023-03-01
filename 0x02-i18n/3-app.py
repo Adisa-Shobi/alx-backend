@@ -3,7 +3,7 @@
 Basic flask application
 '''
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, _
 
 
 app = Flask(__name__)
@@ -18,6 +18,7 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+app.config.from_object(Config)
 
 @babel.localeselector
 def get_locale():
@@ -32,8 +33,8 @@ def hello_world() -> str:
     '''
     Home route
     '''
-    return render_template('2-index.html')
+    return render_template('3-index.html')
 
 
 if __name__ == "__main__":
-    app.run(port=5001)
+    app.run()
