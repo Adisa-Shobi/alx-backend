@@ -36,12 +36,12 @@ def get_locale() -> str:
     selects a locale to use as default
     Detects locale variable in requests
     '''
-    supported_locales = ['en', 'fr']
+    supported_locales = app.config['LANGUAGES']
     if 'locale' in request.args:
         locale = request.args.get('locale')
         if locale in supported_locales:
             return locale
-    if g.user:
+    if g.user and g.user.get('locale') in supported_locales:
         return g.user.get('locale')
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
