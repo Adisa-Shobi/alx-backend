@@ -22,7 +22,12 @@ class Config:
 
 
 app.config.from_object(Config)  # Configuration initialized in app instance
-
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
 
 @babel.localeselector
 def get_locale() -> str:
@@ -61,12 +66,6 @@ def get_user():
     '''
     Get's users from mock database and returns them appropriately
     '''
-    users = {
-        1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
-        2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
-        3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
-        4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
-    }
     if 'login_as' in request.args:
         id = int(request.args.get('login_as'))
         return users.get(id, None)
