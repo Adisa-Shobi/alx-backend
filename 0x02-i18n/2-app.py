@@ -24,7 +24,7 @@ def get_locale():
     '''
     selects a locale to use as default
     '''
-    return request.accept_language.best_match(app.config('LANGUAGES'))
+    return request.accept_languages.best_match(app.config('LANGUAGES'))
 
 
 @app.route('/', strict_slashes=False)
