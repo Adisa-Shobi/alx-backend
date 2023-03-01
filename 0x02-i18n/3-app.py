@@ -18,20 +18,22 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
 app.config.from_object(Config)
+
 
 @babel.localeselector
 def get_locale():
     '''
     selects a locale to use as default
     '''
-    return request.accept_languages.best_match(app.config('LANGUAGES'))
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', strict_slashes=False)
 def hello_world() -> str:
     '''
-    Home route
+    Home route serves index page
     '''
     return render_template('3-index.html')
 
