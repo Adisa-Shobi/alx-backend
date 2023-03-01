@@ -23,7 +23,7 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     '''
     selects a locale to use as default
     '''
@@ -39,4 +39,7 @@ def hello_world() -> str:
 
 
 if __name__ == "__main__":
+    '''
+    Starts code if not imported
+    '''
     app.run()
